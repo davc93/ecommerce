@@ -1,4 +1,5 @@
 import { SVGProps } from "@/interfaces";
+export { IconBox } from "./icon-box";
 
 export { IconGrape } from "./icon-grape";
 

@@ -8,8 +8,8 @@ export default function Layout({
 }>) {
   return (
     <>
-      <Sidebar />
-      <main className="px-2">{children}</main>
+      {/* <Sidebar /> */}
+      <div className="px-2">{children}</div>
     </>
   );
 }

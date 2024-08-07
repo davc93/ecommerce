@@ -8,6 +8,7 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
+import { useCartStore } from "@/stores";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -16,10 +17,13 @@ type Props = {
     name:string
     description:string
     slug:string
-    image:string
+    image:string,
+    price:number
 }
-export const ProductCard = ({name,description,slug = '#',image}:Props) => {
+
+export const ProductCard = ({name,description,slug = '#',image,price}:Props) => {
   const path = usePathname()
+  const addItem = useCartStore(state => state.addItem)
   return (
     <Card>
       <Link href={`${path}/${slug}`}>
@@ -37,7 +41,12 @@ export const ProductCard = ({name,description,slug = '#',image}:Props) => {
       </Link>
 
       <CardFooter className="justify-end">
-        <Button>Add to cart</Button>
+        <Button onClick={()=>{addItem({
+          id: name,
+          quantity: 1,
+          name,
+          price
+        })}}>Add to cart</Button>
       </CardFooter>
     </Card>
   );
