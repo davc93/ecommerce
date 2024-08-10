@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /**
  * v0 by Vercel.
  * @see https://v0.dev/t/R1hAQBaKpSN

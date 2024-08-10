@@ -37,7 +37,7 @@ export default function Page() {
             <div className="bg-muted p-4 rounded-md">
               <div className="grid gap-4">
                 {items.map((item) => (
-                  <div className="flex items-center gap-4">
+                  <div key={item.id} className="flex items-center gap-4">
                     <img
                       src="/placeholder.svg"
                       alt="Product Image"
