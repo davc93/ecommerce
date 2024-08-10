@@ -1,4 +1,5 @@
-'use client'
+"use client";
+import { ReloadIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -13,10 +14,20 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/stores";
-
+import { usePayOrder } from "./usePayOrder";
 export default function Page() {
   const items = useCartStore((state) => state.items);
-  const total = items.reduce((prev,current)=>prev + current.price * current.quantity,0)
+  const total = items.reduce(
+    (prev, current) => prev + current.price * current.quantity,
+    0
+  );
+  const { mutation: payOrder } = usePayOrder();
+
+  const handlePayClick = async () => {
+    const response = await payOrder.mutateAsync({ items, total });
+    // console.log(response);
+    window.open(response.url)
+  };
   return (
     <>
       <div className="flex-1 py-8 px-4 md:px-8 lg:px-12">
@@ -65,13 +76,13 @@ export default function Page() {
                     placeholder="john@example.com"
                   />
                 </div>
-                <div className="grid gap-2">
+                {/* <div className="grid gap-2">
                   <Label htmlFor="address">Address</Label>
                   <Textarea
                     id="address"
                     placeholder="123 Main St, Anytown USA"
                   />
-                </div>
+                </div> */}
               </form>
             </div>
           </div>
@@ -94,7 +105,16 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <Button className="w-full mt-4">Place Order</Button>
+          <Button
+            onClick={handlePayClick}
+            disabled={payOrder.isPending}
+            className="w-full mt-4"
+          >
+            {payOrder.isPending && (
+              <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+            )}
+            {payOrder.isPending ? "Cargando" : "Place Order"}
+          </Button>
         </div>
       </div>
       <footer className="bg-primary text-primary-foreground py-4 px-6 flex items-center justify-between">

@@ -5,7 +5,7 @@ const products = [
     attributes: {
       name: "Royal terroir",
       slug: "royal-terroir",
-      price: 30.55,
+      price: 13055,
       createdAt: "2023-11-02T17:41:55.641Z",
       updatedAt: "2023-11-02T17:49:22.271Z",
       publishedAt: "2023-11-02T17:41:57.241Z",
@@ -25,7 +25,7 @@ const products = [
     attributes: {
       name: "Mary Jane",
       slug: "mary-jane",
-      price: 23.4,
+      price: 23902,
       createdAt: "2023-11-02T17:50:10.644Z",
       updatedAt: "2023-11-02T17:50:57.936Z",
       publishedAt: "2023-11-02T17:50:12.289Z",
@@ -44,7 +44,7 @@ const products = [
     id: 5,
     attributes: {
       name: "Santiago",
-      price: 40,
+      price: 4000,
       slug: "santiago",
       createdAt: "2023-11-02T17:52:15.604Z",
       updatedAt: "2023-11-02T17:53:09.906Z",
@@ -64,7 +64,7 @@ const products = [
     id: 7,
     attributes: {
       name: "Magic Valley",
-      price: 60,
+      price: 6000,
       createdAt: "2023-11-02T17:54:37.410Z",
       updatedAt: "2023-11-02T17:55:20.196Z",
       publishedAt: "2023-11-02T17:54:38.828Z",

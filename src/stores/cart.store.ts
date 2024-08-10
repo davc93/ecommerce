@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { StateCreator } from "zustand";
 
-interface CartItem {
+export interface CartItem {
   id: string;
   name: string;
   price: number;
