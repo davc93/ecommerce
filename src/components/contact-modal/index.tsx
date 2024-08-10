@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -7,18 +7,21 @@ import {
 } from "../ui/alert-dialog";
 import { ContactForm } from "../contact-form";
 import { Button } from "../ui/button";
-
-export const ContactModal = () => {
+import { Cross1Icon } from "@radix-ui/react-icons";
+type Props = {
+  triggerElement:ReactNode
+}
+export const ContactModal = ({triggerElement}:Props) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline">Contactanos</Button>
+        {triggerElement}
       </AlertDialogTrigger>
-      <AlertDialogContent className="max-w-3xl">
-        <ContactForm />
-        <AlertDialogCancel className="absolute top-0 right-0">
-          Cancel
-        </AlertDialogCancel>
+      <AlertDialogContent className="max-w-3xl max-h-svh overflow-y-auto">
+          <ContactForm />
+          <AlertDialogCancel className="absolute top-0 right-0 border-none shadow-none">
+            <Cross1Icon />
+          </AlertDialogCancel>
       </AlertDialogContent>
     </AlertDialog>
   );

@@ -45,7 +45,9 @@ export const Hero = () => {
               >
                 Shop Wines
               </Link>
-              <ContactModal />
+              <ContactModal
+                triggerElement={<Button variant="outline">Contactanos</Button>}
+              />
             </div>
           </div>
         </div>

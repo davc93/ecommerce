@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { IconGrape } from "../icons";
+import { IconGrape, IconShoppingCart } from "../icons";
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -17,6 +17,8 @@ import {
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { Button } from "../ui/button";
 import { useCartStore } from "@/stores";
+import { ContactModal } from "../contact-modal";
+import { formatPrice } from "@/lib";
 
 export const Navbar = () => {
   return (
@@ -44,20 +46,13 @@ export const Navbar = () => {
         >
           Shop
         </Link>
-
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
+        <ContactModal
+          triggerElement={
             <button className="text-sm font-medium hover:underline underline-offset-4">
               Contact
             </button>
-          </AlertDialogTrigger>
-          <AlertDialogContent className="max-w-3xl">
-            <ContactForm />
-            <AlertDialogCancel className="absolute top-0 right-0">
-              Cancel
-            </AlertDialogCancel>
-          </AlertDialogContent>
-        </AlertDialog>
+          }
+        />
         <CartMenu />
       </nav>
     </header>
@@ -71,8 +66,9 @@ export const CartMenu = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="relative">
-          <div className="w-5 h-5" />
-          {cart.length > 0 && (
+
+          <IconShoppingCart className="mx-auto" />
+          {cart.length >= 0 && (
             <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground rounded-full px-1.5 py-0.5 text-xs font-medium">
               {cart.length}
             </span>
@@ -100,11 +96,11 @@ export const CartMenu = () => {
                   <div className="grid gap-1">
                     <h4 className="font-medium">{item.name}</h4>
                     <p className="text-sm text-muted-foreground">
-                      {item.quantity} x ${item.price.toFixed(2)}
+                      {item.quantity} x ${formatPrice(item.price)}
                     </p>
                   </div>
                   <div className="text-right font-medium">
-                    ${(item.price * item.quantity).toFixed(2)}
+                    ${formatPrice(item.price * item.quantity)}
                   </div>
                 </div>
               ))}
@@ -116,8 +112,8 @@ export const CartMenu = () => {
                 {/* <span className="font-medium">${total.toFixed(2)}</span> */}
               </div>
               <div className="grid sm:grid-cols-2 gap-2">
-                <Link href={'/checkout'}>
-                  <Button variant="outline">Checkout</Button>
+                <Link href={"/checkout"}>
+                  <Button variant='outline'>Checkout</Button>
                 </Link>
                 <Button variant="ghost" onClick={clearCart}>
                   Clear Cart
@@ -135,4 +131,3 @@ export const CartMenu = () => {
     </DropdownMenu>
   );
 };
-

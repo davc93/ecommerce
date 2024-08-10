@@ -15,6 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/stores";
 import { usePayOrder } from "./usePayOrder";
+import { formatPrice } from "@/lib";
 export default function Page() {
   const items = useCartStore((state) => state.items);
   const total = items.reduce(
@@ -49,11 +50,11 @@ export default function Page() {
                     <div className="flex-1">
                       <h3 className="font-medium">{item.name}</h3>
                       <p className="text-muted-foreground text-sm">
-                        ${item.price} x {item.quantity}
+                        ${formatPrice(item.price)} x {item.quantity}
                       </p>
                     </div>
                     <p className="font-medium">
-                      $ {item.price * item.quantity}
+                      $ {formatPrice(item.price * item.quantity)}
                     </p>
                   </div>
                 ))}
@@ -92,7 +93,7 @@ export default function Page() {
             <div className="grid gap-2">
               <div className="flex items-center justify-between">
                 <p>Subtotal</p>
-                <p className="font-medium">${total}</p>
+                <p className="font-medium">${formatPrice(total)}</p>
               </div>
               <div className="flex items-center justify-between">
                 <p>Taxes</p>
@@ -101,7 +102,7 @@ export default function Page() {
               <Separator />
               <div className="flex items-center justify-between">
                 <p className="font-medium">Total</p>
-                <p className="font-medium">${total}</p>
+                <p className="font-medium">${formatPrice(total)}</p>
               </div>
             </div>
           </div>
@@ -131,3 +132,4 @@ export default function Page() {
     </>
   );
 }
+

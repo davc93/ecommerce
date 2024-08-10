@@ -1,6 +1,7 @@
 import { SVGProps } from "@/interfaces";
+export { IconStar } from "./icon-start";
 export { IconBox } from "./icon-box";
-
+export { IconShoppingCart } from "./icon-cart";
 export { IconGrape } from "./icon-grape";
 
 export function IconInstagram(props:SVGProps) {
