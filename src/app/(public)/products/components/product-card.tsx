@@ -9,6 +9,7 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
+import { useToast } from "@/hooks";
 import { formatPrice } from "@/lib";
 import { useCartStore } from "@/stores";
 import Image from "next/image";
@@ -30,16 +31,22 @@ export const ProductCard = ({
   image,
   price,
 }: Props) => {
+  const toast = useToast();
   const rating = 4;
   const path = usePathname();
   const addItem = useCartStore((state) => state.addItem);
   const handleAddClick = () => {
-    addItem({
-      id: name,
-      quantity: 1,
-      name,
-      price,
-    });
+    try {
+      addItem({
+        id: name,
+        quantity: 1,
+        name,
+        price,
+      });
+      toast.toast({
+        description: "Producto agregado al carrito",
+      });
+    } catch (error) {}
   };
   return (
     <div
