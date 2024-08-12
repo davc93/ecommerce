@@ -18,7 +18,7 @@ export const Products = () => {
         <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
           <div className="group grid gap-4">
             <img
-              src="/placeholder.svg"
+              src="https://res.cloudinary.com/dxryc5jgr/image/upload/c_scale,q_60,w_500/v1723493601/583075_cabernet_sauvignon_wine__xl-1024-v1-0_snw3sj.webp"
               width="400"
               height="400"
               alt="Wine 1"
@@ -34,7 +34,7 @@ export const Products = () => {
           </div>
           <div className="group grid gap-4">
             <img
-              src="/placeholder.svg"
+              src="https://res.cloudinary.com/dxryc5jgr/image/upload/c_scale,q_60,w_500/v1723493847/719859_chardonnay_wine__xl-1024-v1-0_hxiics.webp"
               width="400"
               height="400"
               alt="Wine 2"
@@ -50,7 +50,7 @@ export const Products = () => {
           </div>
           <div className="group grid gap-4">
             <img
-              src="/placeholder.svg"
+              src="https://res.cloudinary.com/dxryc5jgr/image/upload/c_scale,q_60,w_500/v1723493723/178859_pinot_noir_wine__xl-1024-v1-0_o7xin2.webp"
               width="400"
               height="400"
               alt="Wine 3"

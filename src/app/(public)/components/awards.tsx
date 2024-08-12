@@ -1,3 +1,4 @@
+import { ContactModal } from "@/components/contact-modal";
 import Link from "next/link";
 import React from "react";
 
@@ -17,19 +18,19 @@ export const Awards = () => {
               us numerous awards and accolades.
             </p>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Link
-                href="#"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                prefetch={false}
-              >
-                Learn More
-              </Link>
+              <ContactModal
+                triggerElement={
+                  <button className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
+                    Learn More
+                  </button>
+                }
+              />
             </div>
           </div>
           <div className="grid gap-4">
             <div className="flex items-center gap-4">
               <img
-                src="/placeholder.svg"
+                src="https://res.cloudinary.com/dxryc5jgr/image/upload/c_scale,w_100/v1723494007/703691_Best_Winery_of_the_Year_award_logo__xl-1024-v1-0_b6tbxg.webp"
                 width="80"
                 height="80"
                 alt="Award 1"
@@ -44,7 +45,7 @@ export const Awards = () => {
             </div>
             <div className="flex items-center gap-4">
               <img
-                src="/placeholder.svg"
+                src="https://res.cloudinary.com/dxryc5jgr/image/upload/c_scale,q_60,w_100/v1723494127/414071_Award_logo_of_Organic_Farming_Association__xl-1024-v1-0_ub1rbu.webp"
                 width="80"
                 height="80"
                 alt="Award 2"
@@ -61,7 +62,7 @@ export const Awards = () => {
             </div>
             <div className="flex items-center gap-4">
               <img
-                src="/placeholder.svg"
+                src="https://res.cloudinary.com/dxryc5jgr/image/upload/c_scale,q_60,w_100/v1723494236/764735_Award_logo_of_Best_Cabernet_Sauvignon__xl-1024-v1-0_saoaw3.webp"
                 width="80"
                 height="80"
                 alt="Award 3"

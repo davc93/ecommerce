@@ -17,11 +17,11 @@ import React from "react";
 
 export const Hero = () => {
   return (
-    <section className="w-full pt-12 md:pt-24 lg:pt-32">
+    <section className="w-full pb-12 md:pb-24 lg:pb-32">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
           <img
-            src="/placeholder.svg"
+            src="https://res.cloudinary.com/dxryc5jgr/image/upload/q_60/v1723493169/73720_a_table_with_wines_in_a_winery__xl-1024-v1-0_igqj6j.webp"
             width="550"
             height="550"
             alt="Hero"
@@ -46,7 +46,7 @@ export const Hero = () => {
                 Shop Wines
               </Link>
               <ContactModal
-                triggerElement={<Button variant="outline">Contactanos</Button>}
+                triggerElement={<Button variant="outline">Contact us</Button>}
               />
             </div>
           </div>

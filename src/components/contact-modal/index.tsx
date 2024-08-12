@@ -19,7 +19,7 @@ export const ContactModal = ({triggerElement}:Props) => {
       </AlertDialogTrigger>
       <AlertDialogContent className="max-w-3xl max-h-svh overflow-y-auto">
           <ContactForm />
-          <AlertDialogCancel className="absolute top-0 right-0 border-none shadow-none">
+          <AlertDialogCancel className="absolute top-1  right-1 border-none shadow-none">
             <Cross1Icon />
           </AlertDialogCancel>
       </AlertDialogContent>
