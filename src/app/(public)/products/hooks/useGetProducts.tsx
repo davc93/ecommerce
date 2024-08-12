@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import type { ProductsResponse } from "../models";
 type Filter = { field: string; value: string };
-const getProducts = async (filter?: Filter): Promise<ProductsResponse["data"]> => {
+const getProducts = async (
+  filter?: Filter
+): Promise<ProductsResponse["data"]> => {
   const params = new URLSearchParams();
   if (filter) {
     params.append(filter.field, filter.value);
@@ -13,28 +15,27 @@ const getProducts = async (filter?: Filter): Promise<ProductsResponse["data"]> =
   } catch (error) {
     throw new Error(error as string);
   }
-}
+};
 
 export const useGetProducts = () => {
   const [products, setProducts] = useState<ProductsResponse["data"]>([]);
   const [filter, setFilter] = useState<Filter>({ field: "", value: "" });
 
   useEffect(() => {
-    getProducts(filter).then((products) => {
-      console.log(filter);
-      
-      setProducts(products);
-    });
+    if (products.length !== 1) {
+      getProducts(filter).then((products) => {
+        setProducts(products);
+      });
+    }
   }, [filter]);
-  const filterBySlug = (slug:string) => {
+  const filterBySlug = (slug: string) => {
     setFilter({
-      field:'slug',
-      value:slug
-    })
-  }
+      field: "slug",
+      value: slug,
+    });
+  };
   return {
     products,
-    filterBySlug
-    
+    filterBySlug,
   };
 };

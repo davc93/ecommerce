@@ -1,6 +1,6 @@
 "use client";
 import { IconStar } from "@/components/icons";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -74,39 +74,15 @@ export const ProductCard = ({
               {rating.toFixed(1)}
             </span>
           </div>
-          <div className="text-lg font-semibold">${formatPrice(price)}</div>
+          <div className="text-lg font-semibold">{formatPrice(price)}</div>
         </div>
         <Button onClick={handleAddClick} size="sm" className="w-full mt-4">
           Add to Cart
+        </Button>
+        <Button asChild variant={"outline"} size="sm" className="w-full mt-2">
+          <Link href={`${path}/${slug}`}>More details</Link>
         </Button>
       </div>
     </div>
   );
 };
-
-{
-  /* <Card>
-      <Link href={`${path}/${slug}`}>
-        <div className="relative h-52 ">
-        <Image src={image} alt={name} fill style={{objectFit:'contain'}}  />
-        </div>
-
-        <CardHeader>
-          <CardTitle>{name}</CardTitle>
-          <CardDescription>{description}</CardDescription>
-        </CardHeader>
-        {/* <CardContent>
-      <p>Card Content</p>
-    </CardContent> */
-}
-// </Link>
-
-// <CardFooter className="justify-end">
-//   <Button onClick={()=>{addItem({
-//     id: name,
-//     quantity: 1,
-//     name,
-//     price
-//   })}}>Add to cart</Button>
-// </CardFooter>
-// </Card> */}

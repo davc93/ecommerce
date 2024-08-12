@@ -3,5 +3,5 @@ export const formatPrice = (amount:number) => {
         currency:'CLP'
     })
 
-    return formater.format(amount)
+    return `$${formater.format(amount)}`
 }

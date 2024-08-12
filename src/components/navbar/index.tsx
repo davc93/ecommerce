@@ -100,7 +100,7 @@ export const CartMenu = () => {
                     </p>
                   </div>
                   <div className="text-right font-medium">
-                    ${formatPrice(item.price * item.quantity)}
+                    {formatPrice(item.price * item.quantity)}
                   </div>
                 </div>
               ))}

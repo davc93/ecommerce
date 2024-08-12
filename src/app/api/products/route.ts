@@ -65,6 +65,7 @@ const products = [
     attributes: {
       name: "Magic Valley",
       price: 6000,
+      slug:'magic-valley',
       createdAt: "2023-11-02T17:54:37.410Z",
       updatedAt: "2023-11-02T17:55:20.196Z",
       publishedAt: "2023-11-02T17:54:38.828Z",
@@ -80,10 +81,11 @@ const products = [
     },
   },
   {
-    id: 1,
+    id: 10,
     attributes: {
-      name: "Royal terroir",
-      price: 15000,
+      name: "Golden Vineyard",
+      slug:'golden-vineyard',
+      price: 20000,
       createdAt: "2023-11-02T17:41:55.641Z",
       updatedAt: "2023-11-02T17:49:22.271Z",
       publishedAt: "2023-11-02T17:41:57.241Z",
@@ -99,10 +101,11 @@ const products = [
     },
   },
   {
-    id: 3,
+    id: 20,
     attributes: {
-      name: "Mary Jane",
-      price: 16200,
+      name: "Silver Mist",
+      slug:'silver-mist',
+      price: 18000,
       createdAt: "2023-11-02T17:50:10.644Z",
       updatedAt: "2023-11-02T17:50:57.936Z",
       publishedAt: "2023-11-02T17:50:12.289Z",
@@ -118,10 +121,11 @@ const products = [
     },
   },
   {
-    id: 5,
+    id: 30,
     attributes: {
-      name: "Santiago",
-      price: 15990,
+      name: "Emerald Hills",
+      slug:'emerald-hills',
+      price: 17000,
       createdAt: "2023-11-02T17:52:15.604Z",
       updatedAt: "2023-11-02T17:53:09.906Z",
       publishedAt: "2023-11-02T17:52:34.323Z",
@@ -137,10 +141,11 @@ const products = [
     },
   },
   {
-    id: 7,
+    id: 40,
     attributes: {
-      name: "Magic Valley",
-      price: 3000,
+      name: "Ruby Valley",
+      slug:'ruby-valley',
+      price: 3500,
       createdAt: "2023-11-02T17:54:37.410Z",
       updatedAt: "2023-11-02T17:55:20.196Z",
       publishedAt: "2023-11-02T17:54:38.828Z",
@@ -161,8 +166,8 @@ export async function GET(req: NextRequest) {
   const slug = req.nextUrl.searchParams.get("slug");
   // console.log(locale);
   if (slug) {
-    console.log(slug,'slug');
-    
+    console.log(slug, "slug");
+
     return Response.json(
       { data: products.filter((product) => product.attributes.slug == slug) },
       { status: 200 }
