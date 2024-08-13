@@ -1,6 +1,16 @@
-import React from "react";
+'use client'
+import { motion, useScroll } from "framer-motion";
+import React, { useRef } from "react";
 
 export const Products = () => {
+  const listRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: listRef,
+    
+    offset: ["end end", "start start"],
+    
+  });
+  
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
       <div className="container px-4 md:px-6">
@@ -15,8 +25,15 @@ export const Products = () => {
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
-          <div className="group grid gap-4">
+        <motion.div viewport={{once:true}} transition={{ delay: 0.7 }}  initial={
+            {opacity:0,
+              y:100
+            }
+          }  whileInView={{
+            opacity:1,
+            y:0
+          }}  className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
+          <div   className="group grid gap-4">
             <img
               src="https://res.cloudinary.com/dxryc5jgr/image/upload/c_scale,q_60,w_500/v1723493601/583075_cabernet_sauvignon_wine__xl-1024-v1-0_snw3sj.webp"
               width="400"
@@ -32,7 +49,7 @@ export const Products = () => {
               </p>
             </div>
           </div>
-          <div className="group grid gap-4">
+          <motion.div  className="group grid gap-4">
             <img
               src="https://res.cloudinary.com/dxryc5jgr/image/upload/c_scale,q_60,w_500/v1723493847/719859_chardonnay_wine__xl-1024-v1-0_hxiics.webp"
               width="400"
@@ -47,8 +64,8 @@ export const Products = () => {
                 citrus, and a touch of vanilla.
               </p>
             </div>
-          </div>
-          <div className="group grid gap-4">
+          </motion.div>
+          <motion.div  className="group grid gap-4">
             <img
               src="https://res.cloudinary.com/dxryc5jgr/image/upload/c_scale,q_60,w_500/v1723493723/178859_pinot_noir_wine__xl-1024-v1-0_o7xin2.webp"
               width="400"
@@ -63,8 +80,9 @@ export const Products = () => {
                 mushrooms, and a silky texture.
               </p>
             </div>
-          </div>
-        </div>
+          </motion.div>
+
+        </motion.div>
       </div>
     </section>
   );

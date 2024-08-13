@@ -1,25 +1,26 @@
-import { ContactForm } from "@/components/contact-form";
+"use client";
 import { ContactModal } from "@/components/contact-modal";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import React from "react";
+import { motion } from "framer-motion";
+import { useRef } from "react";
 
 export const Hero = () => {
+  // const scrollRef = useRef(null);
   return (
     <section className="w-full pb-12 md:pb-24 lg:pb-32">
-      <div className="container px-4 md:px-6">
-        <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+      <div  className="container px-4 md:px-6 overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0,x:200 }}
+          whileInView={{ opacity: 1,x:0 }}
+          viewport={{
+            once:true
+          }}
+          transition={{
+            type:'spring'
+          }}
+          className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]"
+        >
           <img
             src="https://res.cloudinary.com/dxryc5jgr/image/upload/q_60/v1723493169/73720_a_table_with_wines_in_a_winery__xl-1024-v1-0_igqj6j.webp"
             width="550"
@@ -50,7 +51,7 @@ export const Hero = () => {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
