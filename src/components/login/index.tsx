@@ -1,61 +1,57 @@
-'use client'
+"use client";
 import { useForm } from "react-hook-form";
-import {
-  Form,
-  FormField,
-  FormLabel,
-  FormControl,
-  FormItem,
-  FormDescription,
-  FormMessage,
-} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { Label } from "../ui/label";
+import { wait } from "@/helpers";
+import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 const FormSchema = z.object({
-  email: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
+  email: z.string().email(),
   password: z.string(),
 });
+
+type FormValues = z.infer<typeof FormSchema>
+
 export const LoginForm = () => {
-  const form = useForm<z.infer<typeof FormSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(FormSchema),
   });
-  const onSubmit = () => {};
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+  const path = usePathname()
+  const onSubmit = async (data:FormValues) => {
+    setIsLoading(true)
+    try {
+      await wait(3)
+      router.push('/admin/dashboard')
+      
+    } catch (error) {
+      
+    }
+    setIsLoading(false)
+
+  };
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full max-w-md space-y-6">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter your email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter your password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit</Button>
-      </form>
-    </Form>
+    <form
+      onSubmit={form.handleSubmit(onSubmit)}
+      className="w-full max-w-md space-y-6"
+    >
+      <div>
+        <Label>Email</Label>
+        <Input {...form.register('email')} placeholder="Enter your email" />
+        <span>{form.formState.errors.email?.message}</span>
+      </div>
+      <div>
+        <Label>Password</Label>
+
+        <Input type="password" {...form.register('password')} placeholder="Enter your password" />
+        <span>{form.formState.errors.password?.message}</span>
+      </div>
+
+      <Button type="submit">{ isLoading ? 'Loading...' : 'Login'}</Button>
+    </form>
   );
 };

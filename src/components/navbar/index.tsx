@@ -46,6 +46,7 @@ export const Navbar = () => {
         >
           Shop
         </Link>
+        
         <ContactModal
           triggerElement={
             <button className="text-sm font-medium hover:underline underline-offset-4">
