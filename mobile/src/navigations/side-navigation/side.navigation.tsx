@@ -3,8 +3,19 @@ import { HomeScreen } from './screens/home/home.screen';
 import { ShippingNavigation } from './navigations/shipping/shipping.navigation';
 import { useThemeStore } from '../../stores/theme.store';
 import { darkColors, lightColors } from '../../theme';
+import { AuthNavigation } from './navigations/auth/auth.navigation';
 
-const Drawer = createDrawerNavigator();
+
+
+export type RootSideParams = {
+  Home:undefined,
+  Auth:undefined,
+  Shipping:undefined,
+
+
+}
+
+const Drawer = createDrawerNavigator<RootSideParams>();
 
 export function SideNavigation() {
   const currentTheme = useThemeStore(state => state.currentTheme);
@@ -29,6 +40,7 @@ export function SideNavigation() {
     }} >
       <Drawer.Screen  name="Home" component={HomeScreen} />
       <Drawer.Screen name="Shipping" component={ShippingNavigation} />
+      <Drawer.Screen name="Auth" component={AuthNavigation} />
 
     </Drawer.Navigator>
   );

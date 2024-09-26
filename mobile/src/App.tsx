@@ -4,6 +4,7 @@ import {SideNavigation} from './navigations/side-navigation/side.navigation';
 import {useColorScheme} from 'react-native';
 import {useEffect} from 'react';
 import {useThemeStore} from './stores/theme.store';
+import {TanstackQuery} from './providers';
 
 export function App(): React.JSX.Element {
   const colorScheme = useColorScheme();
@@ -18,8 +19,10 @@ export function App(): React.JSX.Element {
   }, [colorScheme]);
 
   return (
-    <NavigationContainer>
-      <SideNavigation />
-    </NavigationContainer>
+    <TanstackQuery>
+      <NavigationContainer>
+        <SideNavigation />
+      </NavigationContainer>
+    </TanstackQuery>
   );
 }
