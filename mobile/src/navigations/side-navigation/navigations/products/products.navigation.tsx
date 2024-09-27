@@ -5,7 +5,9 @@ import { ProductScreen } from './screens/product-detail.screen';
 import { HomeScreen } from './screens/home.screen';
 export type ProductsStackParams = {
   Home: undefined;
-  Details: undefined;
+  Details: {
+    productId:string
+  };
 };
 const Stack = createStackNavigator<ProductsStackParams>();
 
